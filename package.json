@@ -1,0 +1,21 @@
+{
+  "name": "my-rsc-framework",
+  "scripts": {
+    "build": "node build.js",
+    "server": "node --conditions react-server server.js",
+    "start": "npm run build && npm run server"
+  },
+  "dependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/register": "^7.25.9",
+    "babel-loader": "^10.0.0",
+    "express": "^5.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-server-dom-webpack": "^19.1.0",
+    "sqlite3": "^5.1.7",
+    "webpack": "^5.99.5"
+  }
+}
