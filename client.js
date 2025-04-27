@@ -7,7 +7,21 @@ const initialReactTreePromise = fetch('/rsc').then((response) => {
 });
 
 function App() {
-  return React.use(initialReactTreePromise);
+  const [tree, setTree] = React.useState(initialReactTreePromise);
+
+  React.useEffect(() => {
+    window.__updateTree = (stream) => {
+      const reactTreePromise =
+        ReactServerDOMWebpackClient.createFromReadableStream(stream);
+      setTree(reactTreePromise);
+    };
+
+    return () => {
+      window.__updateTree = undefined;
+    };
+  }, []);
+
+  return React.use(tree);
 }
 
 const root = ReactDOMClient.createRoot(document.getElementById('root'));
